@@ -9,17 +9,20 @@ jobs:
       matrix:
         node: [18, 20]
 
-      # 할 일 4가지 code 복사(actions), node.js 설치, build, test
     steps:
       - name: '1. checkout'
-      - uses: actions/checkout@v4
+        uses: actions/checkout@v4
+
       - name: '2. node setting'
-      - uses: actions/setup-node@v4
+        uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
+
       - name: '3. install'
         run: npm ci
+
       - name: '4. build'
         run: npm run build
+
       - name: '5. test'
         run: npm run test
