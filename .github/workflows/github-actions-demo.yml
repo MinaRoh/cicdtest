@@ -3,6 +3,23 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [pull_request]
 jobs:
   main:
-    runs-on: ubuntu-latest
+    runs-on:
+      ubuntu-latest
+      # 할 일 4가지 code 복사(actions), node.js 설치, build, test
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+      - name: '1. checkout'
+      - uses: actions/checkout@v4
+
+      - name: '2. node setting'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: '3. install'
+      - run: npm ci
+
+      - name: '4. build'
+      - run: npm run build
+
+      - name: '5. test'
+      - run: npm run test
