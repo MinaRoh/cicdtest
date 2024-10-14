@@ -3,6 +3,12 @@ run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on: [pull_request]
 jobs:
   main:
+    # strategy:
+    #   fail-fast: false
+    #   matrix:
+    #     node: [18, 20]
+    #     react: ['18.x', latest, canary, experimental]
+
     runs-on:
       ubuntu-latest
       # 할 일 4가지 code 복사(actions), node.js 설치, build, test
@@ -16,10 +22,10 @@ jobs:
           node-version: 18
 
       - name: '3. install'
-      - run: npm ci
+        run: npm ci
 
       - name: '4. build'
-      - run: npm run build
+        run: npm run build
 
       - name: '5. test'
-      - run: npm run test
+        run: npm run test
