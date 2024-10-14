@@ -29,6 +29,8 @@ jobs:
 
       - name: '4. build'
         run: npm run build
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
 
       - name: '5. test'
         run: npm run test
