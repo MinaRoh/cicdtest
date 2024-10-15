@@ -39,3 +39,14 @@ jobs:
         uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+  cypress-run:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: 'cypress 1. checkout'
+        uses: actions/checkout@v4
+
+      - name: 'cypress 2. cypress run'
+        uses: cypress-io/github-action@v6
+        with:
+          build: npm run build
+          start: npm start
